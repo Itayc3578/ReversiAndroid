@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorMain"
+    tools:context=".RecordsActivity"
+    android:layoutDirection="ltr">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/lvRecords"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/recordsUpperDelete"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/tvDisplaySelected"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/select_records"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="@+id/btnDeleteSelected"
+                app:layout_constraintEnd_toStartOf="@+id/btnDeleteSelected"
+                app:layout_constraintStart_toEndOf="@+id/cbSelectAll"
+                app:layout_constraintTop_toTopOf="@+id/btnDeleteSelected" />
+
+            <ImageButton
+                android:id="@+id/btnDeleteSelected"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="?attr/selectableItemBackground"
+                android:foreground="?attr/selectableItemBackground"
+                android:onClick="deleteSelectedClicked"
+                android:theme="@style/ThemeOverlay.AppCompat.Dark"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:srcCompat="@drawable/trash_red"
+                android:contentDescription="@string/delete_selected_records" />
+
+            <CheckBox
+                android:id="@+id/cbSelectAll"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginBottom="8dp"
+                android:onClick="selectAll"
+                android:text="@string/all"
+                app:layout_constraintBottom_toBottomOf="@+id/btnDeleteSelected"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/btnDeleteSelected" />
+
+            <TextView
+                android:id="@+id/tvDeleteMode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/delete_mode"
+                android:textSize="36sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageButton
+                android:id="@+id/btnExitDeleteMode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="?attr/selectableItemBackground"
+                android:contentDescription="@string/exit_delete_mode"
+                android:foreground="?attr/selectableItemBackground"
+                android:onClick="toggleDeleteMode"
+                android:theme="@style/ThemeOverlay.AppCompat.Dark"
+                app:layout_constraintBottom_toTopOf="@+id/tvDeleteMode"
+                app:layout_constraintEnd_toEndOf="@+id/tvDeleteMode"
+                app:layout_constraintStart_toStartOf="@+id/tvDeleteMode"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/done_icon" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/recordsUpperDefault"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/tvRecordsTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/records"
+                android:textSize="36sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Spinner
+                android:id="@+id/spnSort"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:layout_marginTop="12dp"
+                app:layout_constraintBottom_toBottomOf="@+id/tvRecordsTitle"
+                app:layout_constraintEnd_toStartOf="@+id/tvRecordsTitle"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tvRecordsTitle" />
+
+            <TextView
+                android:id="@+id/tvSortBy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/sort_by"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="@+id/tvOrderBy"
+                app:layout_constraintStart_toStartOf="@+id/spnSort"
+                app:layout_constraintTop_toTopOf="@+id/tvOrderBy" />
+
+            <ImageButton
+                android:id="@+id/btnAscDesc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="?attr/selectableItemBackground"
+                android:foreground="?attr/selectableItemBackground"
+                android:onClick="changeOrder"
+                android:theme="@style/ThemeOverlay.AppCompat.Dark"
+                app:layout_constraintBottom_toBottomOf="@+id/tvRecordsTitle"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/tvRecordsTitle"
+                app:layout_constraintTop_toTopOf="@+id/tvRecordsTitle"
+                app:srcCompat="@drawable/sort_down"
+                android:contentDescription="@string/change_sorting_order" />
+
+            <TextView
+                android:id="@+id/tvOrderBy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="1dp"
+                android:text="@string/order_by"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toTopOf="@+id/btnAscDesc"
+                app:layout_constraintEnd_toEndOf="@+id/btnAscDesc"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageButton
+                android:id="@+id/btnEnterDeleteMode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="?attr/selectableItemBackground"
+                android:contentDescription="@string/enter_delete_mode"
+                android:foreground="?attr/selectableItemBackground"
+                android:onClick="toggleDeleteMode"
+                android:theme="@style/ThemeOverlay.AppCompat.Dark"
+                app:layout_constraintBottom_toTopOf="@+id/tvRecordsTitle"
+                app:layout_constraintEnd_toEndOf="@+id/tvRecordsTitle"
+                app:layout_constraintStart_toStartOf="@+id/tvRecordsTitle"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/trash_icon" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/glUpperRecords"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="146dp" />
+
+    <ListView
+        android:id="@+id/lvRecords"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/glUpperRecords" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

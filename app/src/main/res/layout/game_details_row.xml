@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="220dp"
+    android:descendantFocusability="blocksDescendants"
+    android:saveEnabled="true">
+
+    <TextView
+        android:id="@+id/tvVs"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/vs"
+        android:textSize="36sp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline10"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="61dp" />
+
+    <TextView
+        android:id="@+id/tvWinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/winner_player1"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="@+id/tvVs"
+        app:layout_constraintStart_toStartOf="@+id/tvVs"
+        app:layout_constraintTop_toTopOf="@+id/guideline10" />
+
+    <include
+        layout="@layout/numbered_disc"
+        android:id="@+id/rowFirstPiecesContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTurnsPlayed"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <include
+        layout="@layout/numbered_disc"
+        android:id="@+id/rowSecondPiecesContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/rowFirstPiecesContainer"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/tvTurnsPlayed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/turns_played_xx"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/tvWinner"
+        app:layout_constraintStart_toStartOf="@+id/tvWinner"
+        app:layout_constraintTop_toBottomOf="@+id/tvTimePassed" />
+
+    <TextView
+        android:id="@+id/tvTimePassed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/time_passed_xx_xx"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/tvWinner"
+        app:layout_constraintStart_toStartOf="@+id/tvWinner"
+        app:layout_constraintTop_toBottomOf="@+id/tvWinner" />
+
+    <TextView
+        android:id="@+id/tvGameId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="2dp"
+        android:text="@string/game_id_xx"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvFirstPlayer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/player1"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tvVs"
+        app:layout_constraintEnd_toStartOf="@+id/tvVs"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tvVs" />
+
+    <TextView
+        android:id="@+id/tvSecondPlayer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/player2"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tvVs"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tvVs"
+        app:layout_constraintTop_toTopOf="@+id/tvVs" />
+
+    <CheckBox
+        android:id="@+id/cbRow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:clickable="false"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline10" />
+
+    <View
+        android:layout_width="2dp"
+        android:layout_height="0dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintEnd_toStartOf="@+id/rowSecondPiecesContainer"
+        app:layout_constraintStart_toEndOf="@+id/rowFirstPiecesContainer"
+        app:layout_constraintTop_toTopOf="@+id/rowFirstPiecesContainer"
+        app:layout_constraintBottom_toBottomOf="@id/rowFirstPiecesContainer"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

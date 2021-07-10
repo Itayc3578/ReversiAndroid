@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="400dp"
+    android:descendantFocusability="blocksDescendants"
+    android:saveEnabled="true">
+
+    <TextView
+        android:id="@+id/tvVs"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/vs"
+        android:textSize="36sp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline10"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvGameId" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="88dp" />
+
+    <TextView
+        android:id="@+id/tvDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/date_finished_dd_mm_yy"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="@+id/tvVs"
+        app:layout_constraintStart_toStartOf="@+id/tvVs"
+        app:layout_constraintTop_toTopOf="@+id/guideline10" />
+
+    <TextView
+        android:id="@+id/tvGameDifficulty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/difficulty_null"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="@+id/tvDate"
+        app:layout_constraintStart_toStartOf="@+id/tvDate"
+        app:layout_constraintTop_toBottomOf="@+id/tvDate" />
+
+    <TextView
+        android:id="@+id/tvWinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/winner_player1"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="@+id/tvDate"
+        app:layout_constraintStart_toStartOf="@+id/tvDate"
+        app:layout_constraintTop_toBottomOf="@+id/tvGameDifficulty" />
+
+    <include
+        layout="@layout/numbered_disc"
+        android:id="@+id/rowFirstPiecesContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/tvAvgDisplay"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTurnsPlayed"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <include
+        layout="@layout/numbered_disc"
+        android:id="@+id/rowSecondPiecesContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/rowFirstPiecesContainer"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <View
+        android:layout_width="2dp"
+        android:layout_height="0dp"
+        android:background="#000"
+        app:layout_constraintBottom_toBottomOf="@id/rowFirstPiecesContainer"
+        app:layout_constraintEnd_toStartOf="@+id/rowSecondPiecesContainer"
+        app:layout_constraintStart_toEndOf="@+id/rowFirstPiecesContainer"
+        app:layout_constraintTop_toTopOf="@+id/rowFirstPiecesContainer" />
+
+    <TextView
+        android:id="@+id/tvTurnsPlayed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/turns_played_xx"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/tvWinner"
+        app:layout_constraintStart_toStartOf="@+id/tvWinner"
+        app:layout_constraintTop_toBottomOf="@+id/tvTimePassed" />
+
+    <TextView
+        android:id="@+id/tvTimePassed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/time_passed_xx_xx"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/tvWinner"
+        app:layout_constraintStart_toStartOf="@+id/tvWinner"
+        app:layout_constraintTop_toBottomOf="@+id/tvWinner" />
+
+    <TextView
+        android:id="@+id/tvGameId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="2dp"
+        android:text="@string/game_id_xx"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/rBtnClose"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:background="?attr/selectableItemBackground"
+        android:foreground="?attr/selectableItemBackground"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/close_icon"
+        android:contentDescription="@string/close" />
+
+    <TextView
+        android:id="@+id/tvFirstPlayer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/player1"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tvVs"
+        app:layout_constraintEnd_toStartOf="@+id/tvVs"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tvVs" />
+
+    <TextView
+        android:id="@+id/tvSecondPlayer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/player2"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tvVs"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tvVs"
+        app:layout_constraintTop_toTopOf="@+id/tvVs" />
+
+    <TextView
+        android:id="@+id/tvAvgDisplay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="@string/average_time_per_turn"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/tvAvgFirst"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tvAvgFirst"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginBottom="8dp"
+        android:text="@string/xx_xxx_seconds"
+        android:textColor="#000000"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/rowFirstPiecesContainer" />
+
+    <TextView
+        android:id="@+id/tvAvgSecond"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:text="@string/xx_xxx_seconds"
+        android:textColor="#000000"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tvAvgFirst"
+        app:layout_constraintEnd_toEndOf="@+id/rowSecondPiecesContainer"
+        app:layout_constraintTop_toTopOf="@+id/tvAvgFirst" />
+
+    <ImageView
+        android:id="@+id/ivFirstAvg"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="4dp"
+        app:layout_constraintBottom_toBottomOf="@+id/tvAvgFirst"
+        app:layout_constraintDimensionRatio="1"
+        app:layout_constraintEnd_toStartOf="@+id/tvAvgFirst"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tvAvgFirst"
+        app:srcCompat="@drawable/disc_img"
+        android:contentDescription="@string/first_player_s_average" />
+
+    <ImageView
+        android:id="@+id/ivSecondAvg"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="4dp"
+        app:layout_constraintBottom_toBottomOf="@+id/tvAvgSecond"
+        app:layout_constraintDimensionRatio="1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tvAvgSecond"
+        app:layout_constraintTop_toTopOf="@+id/tvAvgSecond"
+        app:srcCompat="@drawable/disc_img"
+        android:contentDescription="@string/second_player_s_average" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
